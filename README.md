@@ -25,7 +25,7 @@
 
 ### Association
 - belongs_to :user
-- has_one :item
+- belongs_to :item
 - has_one :sending
 
 
@@ -44,18 +44,18 @@
 - belongs_to :record
 
 ## items テーブル
-| Column              | Type       | Options          |
-| ------------------- | ---------- | ---------------- |
-| user                | reference  |                  |
-| product_name        | string     | null: false      |
-| description         | text       | null: false      |
-| categories_id       | integer    | null: false      |
-| status_id           | integer    | null: false      |
-| delivery_fee_id     | integer    | null: false      |
-| shipment_source_id  | integer    | null: false      |
-| days_id             | integer    | null: false      |
-| price               | integer    | null: false      |
+| Column              | Type       | Options           |
+| ------------------- | ---------- | ----------------- |
+| user                | reference  | foreign_key: true |
+| product_name        | string     | null: false       |
+| description         | text       | null: false       |
+| categories_id       | integer    | null: false       |
+| status_id           | integer    | null: false       |
+| delivery_fee_id     | integer    | null: false       |
+| shipment_source_id  | integer    | null: false       |
+| days_id             | integer    | null: false       |
+| price               | integer    | null: false       |
 
 ### Association
 - belongs_to :user
-- belongs_to :record
+- has_one    :record
