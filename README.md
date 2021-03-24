@@ -1,24 +1,61 @@
 # README
+## users テーブル
+| Column              | Type   | Options          |
+| ------------------- | ------ | ---------------- |
+| nickname            | string | null: false 　　　|
+| encrypted_password  | string | null: false 　　　|
+| email               | string | unique: true     |
+| last_name           | string | null: false      |
+| first_name          | string | null: false      |
+| last_name_ruby      | string | null: false      |
+| first_name_ruby     | string | null: false      |
+| birthday            | date   | null: false      |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :records
 
-* Ruby version
 
-* System dependencies
+## records テーブル
+| Column    | Type       | Options           |
+| --------- | ---------- | ----------------- |
+| user      | references | foreign_key: true |
+| item      | references | foreign_key: true |
 
-* Configuration
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :sending
 
-* Database creation
 
-* Database initialization
+## sendings テーブル
+| Column               | Type       | Options           |
+| -------------------- | ---------- | ----------------- |
+| shipment_source_id   | integer    | null: false       |
+| city                 | string     | null: false       |
+| postal               | string     | null: false       |
+| address              | string     | null: false       |
+| building             | string     |                   |
+| phone_number         | string     | null: false       |
+| record               | references | foreign_key: true |
 
-* How to run the test suite
+### Association
+- belongs_to :record
 
-* Services (job queues, cache servers, search engines, etc.)
+## items テーブル
+| Column              | Type       | Options           |
+| ------------------- | ---------- | ----------------- |
+| user                | references | foreign_key: true |
+| product_name        | string     | null: false       |
+| description         | text       | null: false       |
+| categories_id       | integer    | null: false       |
+| status_id           | integer    | null: false       |
+| delivery_fee_id     | integer    | null: false       |
+| shipment_source_id  | integer    | null: false       |
+| days_id             | integer    | null: false       |
+| price               | integer    | null: false       |
 
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- has_one    :record
