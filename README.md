@@ -1,24 +1,60 @@
 # README
+## users テーブル
+| Column         | Type   | Options          |
+| -------------- | ------ | ---------------- |
+| nickname       | string | null: false 　　　|
+| password       | string | null: false 　　　|
+| mail           | string | uniqueness: true |
+| name_full      | text   | null: false      |
+| name_kana      | text   | null: false      |
+| birthday       | text   | null: false      |
+| credit_number  | text   | null: false      |
+| expiration     | text   | null: false      |
+| code           | text   | null: false      |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_many :items
+- has_many :records
+- has_one  :sending
 
-Things you may want to cover:
+## records テーブル
+| Column    | Type       | Options       |
+| --------- | ---------- | ------------- |
+| user      | reference  |               |
+| item      | string     | null: false   |
 
-* Ruby version
+### Association
+- belongs_to :user
+- has_one :items
 
-* System dependencies
+## sendings テーブル
+| Column       | Type       | Options     |
+| ------------ | ---------- | ----------- |
+| user         | reference  |             |
+| prefecture   | string     | null: false |
+| city         | string     | null: false |
+| postal       | text       | null: false |
+| address      | text       | null: false |
+| building     | text       | null: false |
+| phone_number | text       | null: false |
 
-* Configuration
+### Association
+- belongs_to :user
 
-* Database creation
+## items テーブル
+| Column           | Type       | Options          |
+| ---------------- | ---------- | ---------------- |
+| user             | reference  |                  |
+| product_name     | string     | null: false      |
+| image            |            | ActiveStrorage   |
+| description      | text       | null: false      |
+| category         | text       | null: false      |
+| status           | text       | null: false      |
+| delivery_fee     | text       | null: false      |
+| shipment_source  | text       | null: false      |
+| days             | text       | null: false      |
+| price            | text       | null: false      |
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :user
+- belongs_to :record
