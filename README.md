@@ -18,10 +18,10 @@
 
 
 ## records テーブル
-| Column    | Type       | Options       |
-| --------- | ---------- | ------------- |
-| user      | references |               |
-| item      | references |               |
+| Column    | Type       | Options           |
+| --------- | ---------- | ----------------- |
+| user      | references | foreign_key: true |
+| item      | references | foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -38,7 +38,7 @@
 | address              | string     | null: false       |
 | building             | string     |                   |
 | phone_number         | string     | null: false       |
-| record               | reference  | foreign_key: true |
+| record               | references | foreign_key: true |
 
 ### Association
 - belongs_to :record
@@ -46,7 +46,7 @@
 ## items テーブル
 | Column              | Type       | Options           |
 | ------------------- | ---------- | ----------------- |
-| user                | reference  | foreign_key: true |
+| user                | references | foreign_key: true |
 | product_name        | string     | null: false       |
 | description         | text       | null: false       |
 | categories_id       | integer    | null: false       |
