@@ -5,8 +5,10 @@
 | nickname            | string | null: false 　　　|
 | encrypted_password  | string | null: false 　　　|
 | email               | string | unique: true     |
-| name_full           | string | null: false      |
-| name_kana           | string | null: false      |
+| last_name           | string | null: false      |
+| first_name          | string | null: false      |
+| last_name_ruby      | string | null: false      |
+| first_name_ruby     | string | null: false      |
 | birthday            | date   | null: false      |
 
 
@@ -28,30 +30,31 @@
 
 
 ## sendings テーブル
-| Column       | Type       | Options     |
-| ------------ | ---------- | ----------- |
-| prefecture   | integer    | null: false |
-| city         | string     | null: false |
-| postal       | string     | null: false |
-| address      | string     | null: false |
-| building     | string     |             |
-| phone_number | string     | null: false |
+| Column               | Type       | Options           |
+| -------------------- | ---------- | ----------------- |
+| shipment_source_id   | integer    | null: false       |
+| city                 | string     | null: false       |
+| postal               | string     | null: false       |
+| address              | string     | null: false       |
+| building             | string     |                   |
+| phone_number         | string     | null: false       |
+| record               | reference  | foreign_key: true |
 
 ### Association
 - belongs_to :record
 
 ## items テーブル
-| Column           | Type       | Options          |
-| ---------------- | ---------- | ---------------- |
-| user             | reference  |                  |
-| product_name     | string     | null: false      |
-| description      | text       | null: false      |
-| categories_id    | integer    | null: false      |
-| status           | text       | null: false      |
-| delivery_fee     | text       | null: false      |
-| shipment_source  | text       | null: false      |
-| days             | text       | null: false      |
-| price            | integer    | null: false      |
+| Column              | Type       | Options          |
+| ------------------- | ---------- | ---------------- |
+| user                | reference  |                  |
+| product_name        | string     | null: false      |
+| description         | text       | null: false      |
+| categories_id       | integer    | null: false      |
+| status_id           | integer    | null: false      |
+| delivery_fee_id     | integer    | null: false      |
+| shipment_source_id  | integer    | null: false      |
+| days_id             | integer    | null: false      |
+| price               | integer    | null: false      |
 
 ### Association
 - belongs_to :user
