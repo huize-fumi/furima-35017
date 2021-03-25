@@ -6,9 +6,11 @@ class User < ApplicationRecord
   validates :nickname,       presence: true
   validates :email,          presence: true, uniqueness: true
   validates :password,       presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "は6文字以上かつ英数字をそれぞれ含めてください" }
-  validates :last_name,      presence: true
-  validates :first_name,     presence: true
-  validates :last_name_ruby, presence: true
-  validates :first_name_ruby,presence: true
+  validates :last_name,      presence: true, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/}
+  validates :first_name,     presence: true, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/}
+  validates :last_name_ruby, presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
+  validates :first_name_ruby,presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
+  validates :birthday,       presence: true
+
 
 end
