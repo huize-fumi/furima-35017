@@ -10,10 +10,11 @@ RSpec.describe User, type: :model do
     end
 
     it 'nicknameが空では登録できないこと'do
-      @user = User.new(nickname:"")
+      @user.nickname = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
+
     it 'emailが空では登録できないこと' do
       @user.email = ''
       @user.valid?
@@ -80,25 +81,25 @@ RSpec.describe User, type: :model do
     end
 
     it '名字が全角であれば登録できること' do
-      @user.last_name = ""
+      @user.last_name = "aaa"
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name is invalid")
     end
 
     it '名前が全角であれば登録できること' do
-      @user.first_name = ""
+      @user.first_name = "aaa"
       @user.valid?
       expect(@user.errors.full_messages).to include("First name is invalid")
     end
     
     it '名字がカナであれば登録できること' do
-      @user.last_name_ruby = ""
+      @user.last_name_ruby = "あいうえお"
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name ruby is invalid")
     end
 
     it '名前がカナであれば登録できること' do
-      @user.first_name_ruby = ""
+      @user.first_name_ruby = "あいうえお"
       @user.valid?
       expect(@user.errors.full_messages).to include("First name ruby is invalid")
     end    
