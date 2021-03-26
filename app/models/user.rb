@@ -5,10 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname,       presence: true
   validates :email,          presence: true, uniqueness: true, length: { minimum: 6 }
-  validates :password,       presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
+  template = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates :password,       presence: true, format: { with: template }
   validates :last_name,      presence: true, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
   validates :first_name,     presence: true, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
-  validates :last_name_ruby, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
-  validates :first_name_ruby, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+
+  with_options presence: true do
+    validates :last_name_ruby, format: { with: /\A[ァ-ヶー－]+\z/ }
+    validates :first_name_ruby, format: { with: /\A[ァ-ヶー－]+\z/ }
+  end
+
   validates :birthday, presence: true
 end
