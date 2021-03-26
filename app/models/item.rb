@@ -10,9 +10,7 @@ class Item < ApplicationRecord
     validates :days_id
     validates :price
   end
-
-  validates :user,foreign_key: true
-
+  
   belongs_to :user
 
 end
