@@ -39,7 +39,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーで--が選択されている場合出品できないこと' do
-        @item.categories_id = '--'
+        @item.categories_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Categories can't be blank")
       end
@@ -51,7 +51,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '商品の状態で--が選択されている場合出品できないこと' do
-        @item.status_id = '--'
+        @item.status_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank")
       end
@@ -63,7 +63,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '配送料の負担で-が選択されている場合出品できないこと' do
-        @item.delivery_fee_id = '--'
+        @item.delivery_fee_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
@@ -75,7 +75,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送元の地域で-が選択されている場合出品できないこと' do
-        @item.shipment_source_id = '--'
+        @item.shipment_source_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipment source can't be blank")
       end
@@ -87,7 +87,7 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送までの日数で-が選択されている場合出品できないこと' do
-        @item.days_id = '--'
+        @item.days_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Days can't be blank")
       end
