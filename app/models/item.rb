@@ -21,11 +21,11 @@ class Item < ApplicationRecord
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :genre
-  belongs_to :condition
-  belongs_to :pay
-  belongs_to :period
-  belongs_to :prefecture
+  belongs_to :category
+  belongs_to :status
+  belongs_to :delivery_fee
+  belongs_to :shipment_source
+  belongs_to :day
 
   validates :image, presence: true, unless: :was_attached?
   def was_attached?
