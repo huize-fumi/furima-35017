@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   def index
-    @items = Item.all
+#   @items = Item.all 商品一覧機能実装で使用
   end
 
   def new
     @item = Item.new
-    redirect_to '/users/sign_in' unless user_signed_in?
   end
 
   def create

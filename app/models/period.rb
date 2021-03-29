@@ -7,4 +7,4 @@ class Period < ActiveHash::Base
   ]
   include ActiveHash::Associations
   has_many :day
-  end
+end
