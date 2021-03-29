@@ -4,7 +4,6 @@ RSpec.describe Item, type: :model do
     before do
       user = FactoryBot.create(:user)
       @item = FactoryBot.build(:item, user_id: user.id)
-#      @item.image = public_file_upload('public/images/test_image.png')
     end
 
     context '出品ができる時' do
