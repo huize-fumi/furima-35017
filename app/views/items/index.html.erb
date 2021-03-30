@@ -126,49 +126,33 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-
-
-      <li class='list'>
-        <%= link_to "#" do %>
-
+      <% @items.each do |item| %>
         <div class='item-info'>
-          <% @items.each do |item| %>
-            <%= image_tag (item.image) %>
-            <h3 class='item-name'>
-              <%= item.product_name %>
-            </h3>
-            <div class='item-price'>
-              <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
-              <div class='star-btn'>
-                <%= image_tag "star.png", class:"star-icon" %>
-                <span class='star-count'>0</span>
-              </div>
-            </div>
-          <% end %>
-        </div>
-
-        <div class='item-img-content'>
-          <%= image_tag "item-sample.png", class: "item-img" %>
-
-          <% if item.purchase.present?%>
-            <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div>
-          <% end %>
-        </div>
-
-        <div class='item-info'>
+          <%= image_tag (item.image) %>
           <h3 class='item-name'>
-            <%= "商品名" %>
+            <%= item.product_name %>
           </h3>
           <div class='item-price'>
-            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
+            <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
             </div>
           </div>
         </div>
+      <% end %>
+
+      <li class='list'>
+        <%= link_to "#" do %>
+          <div class='item-img-content'>
+            <%= image_tag "item-sample.png", class: "item-img" %>
+
+<%#            <% if item.purchase.present?%>
+              <div class='sold-out'>
+                <span>Sold Out!!</span>
+              </div>
+<%#            <% end %>
+          </div>       
         <% end %>
       </li>
 
