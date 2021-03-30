@@ -5,11 +5,11 @@ class Item < ApplicationRecord
   end
 
   with_options numericality: { other_than: 0, message: "can't be blank" } do
-    validates :categories_id
+    validates :category_id
     validates :status_id
     validates :delivery_fee_id
     validates :shipment_source_id
-    validates :days_id
+    validates :day_id
   end
 
   validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 },
