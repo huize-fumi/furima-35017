@@ -2,7 +2,6 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :product_name, length: { maximum: 40 }
     validates :description, length: { maximum: 1000 }
-
   end
 
   with_options numericality: { other_than: 0, message: "can't be blank" } do
@@ -19,7 +18,6 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :status
@@ -29,8 +27,6 @@ class Item < ApplicationRecord
 
   validates :image, presence: true, unless: :was_attached?
   def was_attached?
-    self.image.attached?
+    image.attached?
   end
-
-
 end

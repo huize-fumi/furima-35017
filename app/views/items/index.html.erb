@@ -128,34 +128,24 @@
     <ul class='item-lists'>
       <% @items.each do |item| %>
         <div class='item-info'>
-          <%= image_tag (item.image) %>
-          <h3 class='item-name'>
-            <%= item.product_name %>
-          </h3>
-          <div class='item-price'>
-            <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+          <li class='list'>
+            <%= link_to "#" do %>
+              <%= image_tag (item.image) %>
+            <% end %>
+            <h3 class='item-name'>
+              <%= item.product_name %>
+            </h3>
+            <div class='item-price'>
+              <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
+              <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+              </div>
             </div>
-          </div>
+          </li>
         </div>
       <% end %>
-
-      <li class='list'>
-        <%= link_to "#" do %>
-          <div class='item-img-content'>
-            <%= image_tag "item-sample.png", class: "item-img" %>
-
-<%#            <% if item.purchase.present?%>
-              <div class='sold-out'>
-                <span>Sold Out!!</span>
-              </div>
-<%#            <% end %>
-          </div>       
-        <% end %>
-      </li>
-
+      
       <% if @items.length == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
