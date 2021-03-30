@@ -2,11 +2,11 @@ FactoryBot.define do
   factory :item do
     product_name { 'yamada' }
     description { 'yamada' }
-    categories_id { 1 }
+    category_id { 1 }
     status_id { 1 }
     delivery_fee_id { 1 }
     shipment_source_id { 1 }
-    days_id { 1 }
+    day_id { 1 }
     price { 1000 }
 
     after(:build) do |item|
