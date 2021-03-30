@@ -32,15 +32,15 @@ RSpec.describe Item, type: :model do
       end
 
       it 'カテゴリーの情報がなければ出品できないこと' do
-        @item.categories_id = ''
+        @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Categories can't be blank")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it 'カテゴリーで--が選択されている場合出品できないこと' do
-        @item.categories_id = 0
+        @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Categories can't be blank")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it '商品の状態の情報がなければ出品できないこと' do
@@ -80,15 +80,15 @@ RSpec.describe Item, type: :model do
       end
 
       it '発送までの日数の情報がなければ出品できないこと' do
-        @item.days_id = ''
+        @item.day_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days can't be blank")
+        expect(@item.errors.full_messages).to include("Day can't be blank")
       end
 
       it '発送までの日数で-が選択されている場合出品できないこと' do
-        @item.days_id = 0
+        @item.day_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days can't be blank")
+        expect(@item.errors.full_messages).to include("Day can't be blank")
       end
 
       it '販売価格の情報がなければ出品できないこと' do

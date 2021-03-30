@@ -49,11 +49,11 @@
 | user                | references | foreign_key: true |
 | product_name        | string     | null: false       |
 | description         | text       | null: false       |
-| categories_id       | integer    | null: false       |
+| category_id         | integer    | null: false       |
 | status_id           | integer    | null: false       |
 | delivery_fee_id     | integer    | null: false       |
 | shipment_source_id  | integer    | null: false       |
-| days_id             | integer    | null: false       |
+| day_id              | integer    | null: false       |
 | price               | integer    | null: false       |
 
 ### Association
