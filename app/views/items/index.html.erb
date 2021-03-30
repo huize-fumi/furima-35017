@@ -127,11 +127,16 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
       <% @items.each do |item| %>
-        <div class='item-info'>
-          <li class='list'>
-            <%= link_to "#" do %>
-              <%= image_tag (item.image) %>
-            <% end %>
+        <li class='list'>
+          <%= link_to "#" do %>
+          <div class='item-img-content'>
+            <%= image_tag (item.image) %>
+
+            <div class='sold-out'>
+              <span>Sold Out!!</span>
+            </div>
+          </div>
+          <div class='item-info'>
             <h3 class='item-name'>
               <%= item.product_name %>
             </h3>
@@ -140,10 +145,10 @@
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
-              </div>
             </div>
-          </li>
-        </div>
+          </div>
+          <% end %>
+        </li>
       <% end %>
       
       <% if @items.length == 0 %>
