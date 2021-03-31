@@ -26,7 +26,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one :sending
+- has_one :order
 
 
 ## oerders テーブル
@@ -38,10 +38,10 @@
 | address              | string     | null: false       |
 | building             | string     |                   |
 | phone_number         | string     | null: false       |
-| archive               | references | foreign_key: true |
+| archive              | references | foreign_key: true |
 
 ### Association
-- belongs_to :record
+- belongs_to :archive
 
 ## items テーブル
 | Column              | Type       | Options           |
