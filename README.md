@@ -17,7 +17,7 @@
 - has_many :records
 
 
-## records テーブル
+## archives テーブル
 | Column    | Type       | Options           |
 | --------- | ---------- | ----------------- |
 | user      | references | foreign_key: true |
@@ -29,7 +29,7 @@
 - has_one :sending
 
 
-## sendings テーブル
+## oerders テーブル
 | Column               | Type       | Options           |
 | -------------------- | ---------- | ----------------- |
 | shipment_source_id   | integer    | null: false       |
@@ -38,7 +38,7 @@
 | address              | string     | null: false       |
 | building             | string     |                   |
 | phone_number         | string     | null: false       |
-| record               | references | foreign_key: true |
+| archive               | references | foreign_key: true |
 
 ### Association
 - belongs_to :record
