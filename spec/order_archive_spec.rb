@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe OrderArchive, type: :model do
   before '商品購入' do
     @item = FactoryBot.create(:item)
-    @user = FactoryBot.create(:user, email:'test2@example')
-    @order_archive = FactoryBot.build(:order_archive,item_id:@item.id,user_id:@user.id)
-    sleep(0.5)
+    @user = FactoryBot.create(:user, email: 'test2@example')
+    @order_archive = FactoryBot.build(:order_archive, item_id: @item.id, user_id: @user.id)
+    sleep(1)
   end
 
-  context '購入ができる時'do
+  context '購入ができる時' do
     it 'すべての情報が正しく入力されていれば購入できること' do
       expect(@order_archive).to be_valid
     end
@@ -17,7 +17,6 @@ RSpec.describe OrderArchive, type: :model do
       @order_archive.building = ''
       expect(@order_archive).to be_valid
     end
-
   end
 
   context '購入ができない時' do
@@ -54,13 +53,13 @@ RSpec.describe OrderArchive, type: :model do
     it '郵便番号にハイフンがないと購入できないこと' do
       @order_archive.postal = '1234567'
       @order_archive.valid?
-      expect(@order_archive.errors.full_messages).to include("Postal is invalid")
+      expect(@order_archive.errors.full_messages).to include('Postal is invalid')
     end
 
     it '電話番号が英数字混合では購入できないこと' do
       @order_archive.phone_number = '12345abcdef'
       @order_archive.valid?
-      expect(@order_archive.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_archive.errors.full_messages).to include('Phone number is invalid')
     end
 
     it '都道府県で-が選択されている場合出品できないこと' do
@@ -72,13 +71,13 @@ RSpec.describe OrderArchive, type: :model do
     it '電話番号は11桁を超えると購入できないこと' do
       @order_archive.phone_number = '1234567890123'
       @order_archive.valid?
-      expect(@order_archive.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_archive.errors.full_messages).to include('Phone number is invalid')
     end
 
     it '電話番号に数値以外があると購入できないこと' do
       @order_archive.phone_number = '090-1234-5678'
       @order_archive.valid?
-      expect(@order_archive.errors.full_messages).to include("Phone number is invalid")
+      expect(@order_archive.errors.full_messages).to include('Phone number is invalid')
     end
 
     it '紐づくユーザーがいないと購入できないこと' do
@@ -93,9 +92,10 @@ RSpec.describe OrderArchive, type: :model do
       expect(@order_archive.errors.full_messages).to include("Item can't be blank")
     end
 
-
-
+    it 'tokenが空では登録できないこと' do
+      @order_archive.token = nil
+      @order_archive.valid?
+      expect(@order_archive.errors.full_messages).to include("Token can't be blank")
+    end
   end
-
-
 end
