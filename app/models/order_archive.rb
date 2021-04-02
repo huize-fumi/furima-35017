@@ -1,6 +1,6 @@
 class OrderArchive
   include ActiveModel::Model
-  attr_accessor :shipment_source_id, :city, :postal, :address, :building, :phone_number, :archive_id, :user_id, :item_id, :token
+  attr_accessor :shipment_source_id, :city, :postal, :address, :building, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :user_id
